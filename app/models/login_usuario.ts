@@ -2,8 +2,10 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
 export default class LoginUsuario extends BaseModel {
+
+  public static table="login_usuario"
   @column({ isPrimary: true })
-  declare id: number
+  declare id_usuario?: number
 
   @column()
   public documento?: string;
@@ -23,9 +25,9 @@ export default class LoginUsuario extends BaseModel {
   @column()
   public correo?: string;
 
-  @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime
+  // @column.dateTime({ autoCreate: true })
+  // declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  // @column.dateTime({ autoCreate: true, autoUpdate: true })
+  // declare updatedAt: DateTime
 }

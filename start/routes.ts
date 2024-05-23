@@ -20,4 +20,6 @@ router.get('/', async () => {
 })
 //router.get("/usuarios", "UsuariosController.show")
 router.get("/login", [LoginUsuariosController, "index"]);
+router.get("/login/:documento", [LoginUsuariosController, "show"]);
+router.put("/login/:documento", [LoginUsuariosController, "update"]);
 

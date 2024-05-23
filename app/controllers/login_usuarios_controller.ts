@@ -13,6 +13,13 @@ export default class LoginUsuariosController {
 
 
     public async show({ params }: HttpContext) {
-        return LoginUsuario.findOrFail(params.id)
+        return LoginUsuario.query().where('documento',params.documento)
+    }
+
+    public async update({params,request,response}:HttpContext){
+        const body=request.body();
+        const eldocumento:LoginUsuario=await LoginUsuario.query().where('documento',params.documento);
+        eldocumento.documento=body.documento;
+        return eldocumento.save();
     }
 }
