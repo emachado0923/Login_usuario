@@ -16,10 +16,24 @@ export default class LoginUsuariosController {
         return LoginUsuario.query().where('documento',params.documento)
     }
 
+    
+
     public async update({params,request,response}:HttpContext){
-        const body=request.body();
-        const eldocumento:LoginUsuario=await LoginUsuario.query().where('documento',params.documento);
-        eldocumento.documento=body.documento;
-        return eldocumento.save();
+
+        const toUpdate = await LoginUsuario.findBy('documento',params.documento);
+        const body=request.all();
+        console.log(body,toUpdate)
+    if (!toUpdate) return null;
+    
+
+    toUpdate.fill({
+      ...toUpdate.$attributes,
+      
+      correo: body.correo
+    });
+
+    await toUpdate.save();
+    
+       
     }
 }

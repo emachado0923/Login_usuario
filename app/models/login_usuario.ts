@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon'
+//import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
 export default class LoginUsuario extends BaseModel {
@@ -22,12 +22,8 @@ export default class LoginUsuario extends BaseModel {
   @column()
   public segundoNombre?: string;
 
-  @column()
-  public correo?: string;
+  @column({columnName:'correo'})
+  public correo: string=null!;
 
-  // @column.dateTime({ autoCreate: true })
-  // declare createdAt: DateTime
-
-  // @column.dateTime({ autoCreate: true, autoUpdate: true })
-  // declare updatedAt: DateTime
+ 
 }
